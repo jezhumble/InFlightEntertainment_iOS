@@ -1,0 +1,455 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B8ADDBB140C4968008C8310 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8ADDBA140C4968008C8310 /* UIKit.framework */; };
+		2B8ADDBD140C4968008C8310 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8ADDBC140C4968008C8310 /* Foundation.framework */; };
+		2B8ADDBF140C4968008C8310 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8ADDBE140C4968008C8310 /* CoreGraphics.framework */; };
+		2B8ADDC5140C4968008C8310 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B8ADDC3140C4968008C8310 /* InfoPlist.strings */; };
+		2B8ADDC7140C4968008C8310 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ADDC6140C4968008C8310 /* main.m */; };
+		2B8ADDCB140C4968008C8310 /* IFEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ADDCA140C4968008C8310 /* IFEAppDelegate.m */; };
+		2B8ADDCE140C4968008C8310 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B8ADDCC140C4968008C8310 /* MainWindow.xib */; };
+		2B8ADDD1140C4968008C8310 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ADDD0140C4968008C8310 /* RootViewController.m */; };
+		2B8ADDD4140C4968008C8310 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B8ADDD2140C4968008C8310 /* RootViewController.xib */; };
+		2B8ADDDC140C4968008C8310 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8ADDDB140C4968008C8310 /* SenTestingKit.framework */; };
+		2B8ADDDD140C4968008C8310 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8ADDBA140C4968008C8310 /* UIKit.framework */; };
+		2B8ADDDE140C4968008C8310 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8ADDBC140C4968008C8310 /* Foundation.framework */; };
+		2B8ADDDF140C4968008C8310 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8ADDBE140C4968008C8310 /* CoreGraphics.framework */; };
+		2B8ADDE7140C4968008C8310 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B8ADDE5140C4968008C8310 /* InfoPlist.strings */; };
+		2B8ADDE9140C4968008C8310 /* IFETests.h in Resources */ = {isa = PBXBuildFile; fileRef = 2B8ADDE8140C4968008C8310 /* IFETests.h */; };
+		2B8ADDEB140C4968008C8310 /* IFETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ADDEA140C4968008C8310 /* IFETests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2B8ADDE0140C4968008C8310 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B8ADDAD140C4968008C8310 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B8ADDB5140C4968008C8310;
+			remoteInfo = IFE;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2B8ADDB6140C4968008C8310 /* IFE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IFE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B8ADDBA140C4968008C8310 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2B8ADDBC140C4968008C8310 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2B8ADDBE140C4968008C8310 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2B8ADDC2140C4968008C8310 /* IFE-Info.plist */ = {isa = PBXFileReference; path = "IFE-Info.plist"; sourceTree = "<group>"; };
+		2B8ADDC4140C4968008C8310 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2B8ADDC6140C4968008C8310 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2B8ADDC8140C4968008C8310 /* IFE-Prefix.pch */ = {isa = PBXFileReference; path = "IFE-Prefix.pch"; sourceTree = "<group>"; };
+		2B8ADDC9140C4968008C8310 /* IFEAppDelegate.h */ = {isa = PBXFileReference; path = IFEAppDelegate.h; sourceTree = "<group>"; };
+		2B8ADDCA140C4968008C8310 /* IFEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFEAppDelegate.m; sourceTree = "<group>"; };
+		2B8ADDCD140C4968008C8310 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		2B8ADDCF140C4968008C8310 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		2B8ADDD0140C4968008C8310 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		2B8ADDD3140C4968008C8310 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		2B8ADDDA140C4968008C8310 /* IFETests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IFETests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B8ADDDB140C4968008C8310 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		2B8ADDE4140C4968008C8310 /* IFETests-Info.plist */ = {isa = PBXFileReference; path = "IFETests-Info.plist"; sourceTree = "<group>"; };
+		2B8ADDE6140C4968008C8310 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2B8ADDE8140C4968008C8310 /* IFETests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFETests.h; sourceTree = "<group>"; };
+		2B8ADDEA140C4968008C8310 /* IFETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFETests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B8ADDB3140C4968008C8310 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8ADDBB140C4968008C8310 /* UIKit.framework in Frameworks */,
+				2B8ADDBD140C4968008C8310 /* Foundation.framework in Frameworks */,
+				2B8ADDBF140C4968008C8310 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8ADDD6140C4968008C8310 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8ADDDC140C4968008C8310 /* SenTestingKit.framework in Frameworks */,
+				2B8ADDDD140C4968008C8310 /* UIKit.framework in Frameworks */,
+				2B8ADDDE140C4968008C8310 /* Foundation.framework in Frameworks */,
+				2B8ADDDF140C4968008C8310 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2B8ADDAB140C4968008C8310 = {
+			isa = PBXGroup;
+			children = (
+				2B8ADDC0140C4968008C8310 /* IFE */,
+				2B8ADDE2140C4968008C8310 /* IFETests */,
+				2B8ADDB9140C4968008C8310 /* Frameworks */,
+				2B8ADDB7140C4968008C8310 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2B8ADDB7140C4968008C8310 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2B8ADDB6140C4968008C8310 /* IFE.app */,
+				2B8ADDDA140C4968008C8310 /* IFETests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2B8ADDB9140C4968008C8310 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B8ADDBA140C4968008C8310 /* UIKit.framework */,
+				2B8ADDBC140C4968008C8310 /* Foundation.framework */,
+				2B8ADDBE140C4968008C8310 /* CoreGraphics.framework */,
+				2B8ADDDB140C4968008C8310 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B8ADDC0140C4968008C8310 /* IFE */ = {
+			isa = PBXGroup;
+			children = (
+				2B8ADDC9140C4968008C8310 /* IFEAppDelegate.h */,
+				2B8ADDCA140C4968008C8310 /* IFEAppDelegate.m */,
+				2B8ADDCC140C4968008C8310 /* MainWindow.xib */,
+				2B8ADDCF140C4968008C8310 /* RootViewController.h */,
+				2B8ADDD0140C4968008C8310 /* RootViewController.m */,
+				2B8ADDD2140C4968008C8310 /* RootViewController.xib */,
+				2B8ADDC1140C4968008C8310 /* Supporting Files */,
+			);
+			path = IFE;
+			sourceTree = "<group>";
+		};
+		2B8ADDC1140C4968008C8310 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2B8ADDC2140C4968008C8310 /* IFE-Info.plist */,
+				2B8ADDC3140C4968008C8310 /* InfoPlist.strings */,
+				2B8ADDC6140C4968008C8310 /* main.m */,
+				2B8ADDC8140C4968008C8310 /* IFE-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2B8ADDE2140C4968008C8310 /* IFETests */ = {
+			isa = PBXGroup;
+			children = (
+				2B8ADDE8140C4968008C8310 /* IFETests.h */,
+				2B8ADDEA140C4968008C8310 /* IFETests.m */,
+				2B8ADDE3140C4968008C8310 /* Supporting Files */,
+			);
+			path = IFETests;
+			sourceTree = "<group>";
+		};
+		2B8ADDE3140C4968008C8310 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2B8ADDE4140C4968008C8310 /* IFETests-Info.plist */,
+				2B8ADDE5140C4968008C8310 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2B8ADDB5140C4968008C8310 /* IFE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B8ADDEE140C4968008C8310 /* Build configuration list for PBXNativeTarget "IFE" */;
+			buildPhases = (
+				2B8ADDB2140C4968008C8310 /* Sources */,
+				2B8ADDB3140C4968008C8310 /* Frameworks */,
+				2B8ADDB4140C4968008C8310 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IFE;
+			productName = IFE;
+			productReference = 2B8ADDB6140C4968008C8310 /* IFE.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2B8ADDD9140C4968008C8310 /* IFETests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B8ADDF1140C4968008C8310 /* Build configuration list for PBXNativeTarget "IFETests" */;
+			buildPhases = (
+				2B8ADDD5140C4968008C8310 /* Sources */,
+				2B8ADDD6140C4968008C8310 /* Frameworks */,
+				2B8ADDD7140C4968008C8310 /* Resources */,
+				2B8ADDD8140C4968008C8310 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2B8ADDE1140C4968008C8310 /* PBXTargetDependency */,
+			);
+			name = IFETests;
+			productName = IFETests;
+			productReference = 2B8ADDDA140C4968008C8310 /* IFETests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2B8ADDAD140C4968008C8310 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 2B8ADDB0140C4968008C8310 /* Build configuration list for PBXProject "IFE" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2B8ADDAB140C4968008C8310;
+			productRefGroup = 2B8ADDB7140C4968008C8310 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2B8ADDB5140C4968008C8310 /* IFE */,
+				2B8ADDD9140C4968008C8310 /* IFETests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B8ADDB4140C4968008C8310 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8ADDC5140C4968008C8310 /* InfoPlist.strings in Resources */,
+				2B8ADDCE140C4968008C8310 /* MainWindow.xib in Resources */,
+				2B8ADDD4140C4968008C8310 /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8ADDD7140C4968008C8310 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8ADDE7140C4968008C8310 /* InfoPlist.strings in Resources */,
+				2B8ADDE9140C4968008C8310 /* IFETests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B8ADDD8140C4968008C8310 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2B8ADDB2140C4968008C8310 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8ADDC7140C4968008C8310 /* main.m in Sources */,
+				2B8ADDCB140C4968008C8310 /* IFEAppDelegate.m in Sources */,
+				2B8ADDD1140C4968008C8310 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8ADDD5140C4968008C8310 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8ADDEB140C4968008C8310 /* IFETests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2B8ADDE1140C4968008C8310 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2B8ADDB5140C4968008C8310 /* IFE */;
+			targetProxy = 2B8ADDE0140C4968008C8310 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2B8ADDC3140C4968008C8310 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B8ADDC4140C4968008C8310 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2B8ADDCC140C4968008C8310 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B8ADDCD140C4968008C8310 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		2B8ADDD2140C4968008C8310 /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B8ADDD3140C4968008C8310 /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+		2B8ADDE5140C4968008C8310 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B8ADDE6140C4968008C8310 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2B8ADDEC140C4968008C8310 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2B8ADDED140C4968008C8310 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2B8ADDEF140C4968008C8310 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IFE/IFE-Prefix.pch";
+				INFOPLIST_FILE = "IFE/IFE-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2B8ADDF0140C4968008C8310 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IFE/IFE-Prefix.pch";
+				INFOPLIST_FILE = "IFE/IFE-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		2B8ADDF2140C4968008C8310 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IFE.app/IFE";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IFE/IFE-Prefix.pch";
+				INFOPLIST_FILE = "IFETests/IFETests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		2B8ADDF3140C4968008C8310 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IFE.app/IFE";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IFE/IFE-Prefix.pch";
+				INFOPLIST_FILE = "IFETests/IFETests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B8ADDB0140C4968008C8310 /* Build configuration list for PBXProject "IFE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B8ADDEC140C4968008C8310 /* Debug */,
+				2B8ADDED140C4968008C8310 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B8ADDEE140C4968008C8310 /* Build configuration list for PBXNativeTarget "IFE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B8ADDEF140C4968008C8310 /* Debug */,
+				2B8ADDF0140C4968008C8310 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2B8ADDF1140C4968008C8310 /* Build configuration list for PBXNativeTarget "IFETests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B8ADDF2140C4968008C8310 /* Debug */,
+				2B8ADDF3140C4968008C8310 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2B8ADDAD140C4968008C8310 /* Project object */;
+}
