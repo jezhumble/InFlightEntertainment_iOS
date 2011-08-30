@@ -7,13 +7,20 @@
 //
 
 #import "RootViewController.h"
+#import "Movie.h"
 
 @implementation RootViewController
 
+@synthesize IFEList;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.IFEList = [NSMutableArray array];
+
+    self.tableView.rowHeight = 48.0;
+    [self addObserver:self forKeyPath:@"IFEList" options:0 context:NULL];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -52,7 +59,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [IFEList count];
 }
 
 // Customize the appearance of table view cells.
@@ -64,8 +71,10 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-
+    
     // Configure the cell.
+    Movie *movie = [IFEList objectAtIndex:indexPath.row];
+    cell.textLabel.text = movie.name;
     return cell;
 }
 
@@ -135,11 +144,38 @@
 
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
+    self.IFEList = nil;
+    [self removeObserver:self forKeyPath:@"IFEList"];
 }
+
 
 - (void)dealloc
 {
+    [IFEList release];
+
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark KVO support
+
+- (void)insertMovies:(NSArray *)movies
+{
+    // this will allow us as an observer to notified (see observeValueForKeyPath)
+    // so we can update our UITableView
+    //
+    [self willChangeValueForKey:@"IFEList"];
+    [self.IFEList addObjectsFromArray:movies];
+    [self didChangeValueForKey:@"IFEList"];
+}
+
+// listen for changes to the IFE list coming from our app delegate.
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    [self.tableView reloadData];
 }
 
 @end

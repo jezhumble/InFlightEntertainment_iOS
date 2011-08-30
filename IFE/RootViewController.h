@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UITableViewController
+@interface RootViewController : UITableViewController {
+    NSMutableArray *IFEList;
+}
+
+@property (nonatomic, retain) NSMutableArray *IFEList;
+
+- (void)insertMovies:(NSArray *)movies;   // addition method of movies (for KVO purposes)
 
 @end

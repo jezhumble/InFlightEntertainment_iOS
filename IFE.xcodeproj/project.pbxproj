@@ -23,6 +23,8 @@
 		2B8ADDE7140C4968008C8310 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B8ADDE5140C4968008C8310 /* InfoPlist.strings */; };
 		2B8ADDE9140C4968008C8310 /* IFETests.h in Resources */ = {isa = PBXBuildFile; fileRef = 2B8ADDE8140C4968008C8310 /* IFETests.h */; };
 		2B8ADDEB140C4968008C8310 /* IFETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ADDEA140C4968008C8310 /* IFETests.m */; };
+		2B8ADDF8140C4D1A008C8310 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ADDF5140C4D1A008C8310 /* Movie.m */; };
+		2B8ADDF9140C4D1A008C8310 /* ParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ADDF7140C4D1A008C8310 /* ParseOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,22 +42,26 @@
 		2B8ADDBA140C4968008C8310 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2B8ADDBC140C4968008C8310 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2B8ADDBE140C4968008C8310 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2B8ADDC2140C4968008C8310 /* IFE-Info.plist */ = {isa = PBXFileReference; path = "IFE-Info.plist"; sourceTree = "<group>"; };
+		2B8ADDC2140C4968008C8310 /* IFE-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IFE-Info.plist"; sourceTree = "<group>"; };
 		2B8ADDC4140C4968008C8310 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2B8ADDC6140C4968008C8310 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2B8ADDC8140C4968008C8310 /* IFE-Prefix.pch */ = {isa = PBXFileReference; path = "IFE-Prefix.pch"; sourceTree = "<group>"; };
-		2B8ADDC9140C4968008C8310 /* IFEAppDelegate.h */ = {isa = PBXFileReference; path = IFEAppDelegate.h; sourceTree = "<group>"; };
+		2B8ADDC8140C4968008C8310 /* IFE-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IFE-Prefix.pch"; sourceTree = "<group>"; };
+		2B8ADDC9140C4968008C8310 /* IFEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFEAppDelegate.h; sourceTree = "<group>"; };
 		2B8ADDCA140C4968008C8310 /* IFEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFEAppDelegate.m; sourceTree = "<group>"; };
 		2B8ADDCD140C4968008C8310 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		2B8ADDCF140C4968008C8310 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		2B8ADDCF140C4968008C8310 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		2B8ADDD0140C4968008C8310 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		2B8ADDD3140C4968008C8310 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
 		2B8ADDDA140C4968008C8310 /* IFETests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IFETests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8ADDDB140C4968008C8310 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		2B8ADDE4140C4968008C8310 /* IFETests-Info.plist */ = {isa = PBXFileReference; path = "IFETests-Info.plist"; sourceTree = "<group>"; };
+		2B8ADDE4140C4968008C8310 /* IFETests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IFETests-Info.plist"; sourceTree = "<group>"; };
 		2B8ADDE6140C4968008C8310 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2B8ADDE8140C4968008C8310 /* IFETests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFETests.h; sourceTree = "<group>"; };
 		2B8ADDEA140C4968008C8310 /* IFETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFETests.m; sourceTree = "<group>"; };
+		2B8ADDF4140C4D1A008C8310 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
+		2B8ADDF5140C4D1A008C8310 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		2B8ADDF6140C4D1A008C8310 /* ParseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseOperation.h; sourceTree = "<group>"; };
+		2B8ADDF7140C4D1A008C8310 /* ParseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,10 @@
 		2B8ADDC0140C4968008C8310 /* IFE */ = {
 			isa = PBXGroup;
 			children = (
+				2B8ADDF4140C4D1A008C8310 /* Movie.h */,
+				2B8ADDF5140C4D1A008C8310 /* Movie.m */,
+				2B8ADDF6140C4D1A008C8310 /* ParseOperation.h */,
+				2B8ADDF7140C4D1A008C8310 /* ParseOperation.m */,
 				2B8ADDC9140C4968008C8310 /* IFEAppDelegate.h */,
 				2B8ADDCA140C4968008C8310 /* IFEAppDelegate.m */,
 				2B8ADDCC140C4968008C8310 /* MainWindow.xib */,
@@ -265,6 +275,8 @@
 				2B8ADDC7140C4968008C8310 /* main.m in Sources */,
 				2B8ADDCB140C4968008C8310 /* IFEAppDelegate.m in Sources */,
 				2B8ADDD1140C4968008C8310 /* RootViewController.m in Sources */,
+				2B8ADDF8140C4D1A008C8310 /* Movie.m in Sources */,
+				2B8ADDF9140C4D1A008C8310 /* ParseOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +383,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IFE/IFE-Prefix.pch";
 				INFOPLIST_FILE = "IFE/IFE-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -382,6 +395,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IFE/IFE-Prefix.pch";
 				INFOPLIST_FILE = "IFE/IFE-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

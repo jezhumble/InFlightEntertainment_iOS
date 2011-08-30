@@ -7,18 +7,44 @@
 //
 
 #import "IFEAppDelegate.h"
+#import "RootViewController.h"
+#import "ParseOperation.h"
+#import "Movie.h"
+
+#pragma mark IFEAppDelegate () 
+
+// forward declarations
+@interface IFEAppDelegate ()
+
+- (void)addMoviesToList:(NSArray *)movies;
+@end
 
 @implementation IFEAppDelegate
 
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
+@synthesize rootViewController = _rootViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
     self.window.rootViewController = self.navigationController;
+//    [window addSubview:navigationController.view];
+    
     [self.window makeKeyAndVisible];
+    
+    NSMutableArray *movies = [[NSMutableArray alloc] init];
+    Movie *movie = [[Movie alloc] init];
+    [movie setName:@"Test"];
+    [movie setRuntime:120];
+    [movie setGenre:@"Action"];
+    [movie setRating:7.8f];
+    [movies addObject:movie];
+    
+    [self addMoviesToList:movies];
+    [movie release];
+    
     return YES;
 }
 
@@ -66,6 +92,18 @@
     [_window release];
     [_navigationController release];
     [super dealloc];
+}
+
+- (void)addIFE:(NSNotification *)notif {
+    assert([NSThread isMainThread]);
+    
+    [self addMoviesToList:[[notif userInfo] valueForKey:kIFEResultsKey]];
+}
+
+- (void)addMoviesToList:(NSArray *)movies {
+    
+    // insert the earthquakes into our rootViewController's data source (for KVO purposes)
+    [self.rootViewController insertMovies:movies];
 }
 
 @end
