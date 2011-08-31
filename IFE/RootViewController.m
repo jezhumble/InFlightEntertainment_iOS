@@ -20,6 +20,7 @@
     self.IFEList = [NSMutableArray array];
 
     self.tableView.rowHeight = 48.0;
+    self.title = @"Movies";
     [self addObserver:self forKeyPath:@"IFEList" options:0 context:NULL];
 }
 
@@ -100,8 +101,7 @@
     }
     
     // Configure the cell.
-    int row = indexPath.row;
-    Movie *movie = [IFEList objectAtIndex:row];
+    Movie *movie = [IFEList objectAtIndex:indexPath.row];
     nameLabel.text = movie.name;
     infoLabel.text = [NSString stringWithFormat:@"%u (%um) %@", movie.year, movie.runtime, movie.genre];
     ratingLabel.text = [NSString stringWithFormat:@"%.1f", movie.rating];
@@ -151,6 +151,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Movie *movie = [IFEList objectAtIndex:indexPath.row];
+    NSURL *link = [movie imdbWebLink];
+    [[UIApplication sharedApplication] openURL:link];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     /*
     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
     // ...

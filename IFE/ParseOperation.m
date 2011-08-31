@@ -101,9 +101,9 @@ NSString *kIFEMsgErrorKey = @"IFEMsgErrorKey";
         Movie *movie = [[Movie alloc] init];
         self.currentMovieObject = movie;
         [movie release];
-        NSString *movieName = [attributeDict objectForKey:@"name"];
-        if (movieName) {
-            self.currentMovieObject.name = movieName;
+        NSString *imdbLink = [attributeDict objectForKey:@"href"];
+        if (imdbLink) {
+            self.currentMovieObject.imdbWebLink = [NSURL URLWithString:imdbLink];
         }
         NSString *genre = [attributeDict objectForKey:@"genre"];
         if (genre) {
@@ -121,6 +121,8 @@ NSString *kIFEMsgErrorKey = @"IFEMsgErrorKey";
         if (runtime) {
             self.currentMovieObject.rating = [rating floatValue];
         }
+        accumulatingParsedCharacterData = YES;
+        [currentParsedCharacterData setString:@""];
     }
 }
 
@@ -128,6 +130,7 @@ NSString *kIFEMsgErrorKey = @"IFEMsgErrorKey";
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName {     
     if ([elementName isEqualToString:@"movie"]) {
+        self.currentMovieObject.name = self.currentParsedCharacterData;
         [self.currentParseBatch addObject:self.currentMovieObject];
         parsedIFECounter++;
     // Stop accumulating parsed character data. We won't start again until specific elements begin.
