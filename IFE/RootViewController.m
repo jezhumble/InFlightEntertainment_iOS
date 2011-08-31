@@ -73,7 +73,8 @@
     }
     
     // Configure the cell.
-    Movie *movie = [IFEList objectAtIndex:indexPath.row];
+    int row = indexPath.row;
+    Movie *movie = [IFEList objectAtIndex:row];
     cell.textLabel.text = movie.name;
     return cell;
 }

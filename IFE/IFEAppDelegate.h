@@ -10,10 +10,18 @@
 
 @class Movie, RootViewController;
 
-@interface IFEAppDelegate : NSObject <UIApplicationDelegate> {
+@interface IFEAppDelegate : NSObject <UIApplicationDelegate, NSXMLParserDelegate> {
     UIWindow *window;
     UINavigationController *navigationController;
     RootViewController *rootViewController;
+
+@private
+    // for downloading the xml data
+    NSURLConnection *IFEFeedConnection;
+    NSMutableData *IFEData;
+    
+    NSOperationQueue *parseQueue;
+
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

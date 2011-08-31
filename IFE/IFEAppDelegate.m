@@ -11,11 +11,19 @@
 #import "ParseOperation.h"
 #import "Movie.h"
 
+// this framework was imported so we could use the kCFURLErrorNotConnectedToInternet error code
+#import <CFNetwork/CFNetwork.h>
+
 #pragma mark IFEAppDelegate () 
 
 // forward declarations
 @interface IFEAppDelegate ()
 
+@property (nonatomic, retain) NSURLConnection *IFEFeedConnection;
+@property (nonatomic, retain) NSMutableData *IFEData;    // the data returned from the NSURLConnection
+@property (nonatomic, retain) NSOperationQueue *parseQueue;     // the queue that manages our NSOperation for parsing earthquake data
+
+- (void)handleError:(NSError *)error;
 - (void)addMoviesToList:(NSArray *)movies;
 @end
 
@@ -24,26 +32,52 @@
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
 @synthesize rootViewController = _rootViewController;
+@synthesize IFEFeedConnection;
+@synthesize IFEData;
+@synthesize parseQueue;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
     self.window.rootViewController = self.navigationController;
-//    [window addSubview:navigationController.view];
     
     [self.window makeKeyAndVisible];
     
-    NSMutableArray *movies = [[NSMutableArray alloc] init];
-    Movie *movie = [[Movie alloc] init];
-    [movie setName:@"Test"];
-    [movie setRuntime:120];
-    [movie setGenre:@"Action"];
-    [movie setRating:7.8f];
-    [movies addObject:movie];
+    // Use NSURLConnection to asynchronously download the data. This means the main thread will not
+    // be blocked - the application will remain responsive to the user. 
+    //
+    // IMPORTANT! The main thread of the application should never be blocked!
+    // Also, avoid synchronous network access on any thread.
+    //
+    static NSString *feedURLString = @"http://jezhumble.net/ife.xml";
+    NSURLRequest *IFEURLRequest =
+    [NSURLRequest requestWithURL:[NSURL URLWithString:feedURLString]];
+    self.IFEFeedConnection =
+    [[[NSURLConnection alloc] initWithRequest:IFEURLRequest delegate:self] autorelease];
     
-    [self addMoviesToList:movies];
-    [movie release];
+    // Test the validity of the connection object. The most likely reason for the connection object
+    // to be nil is a malformed URL, which is a programmatic error easily detected during development.
+    // If the URL is more dynamic, then you should implement a more flexible validation technique,
+    // and be able to both recover from errors and communicate problems to the user in an
+    // unobtrusive manner.
+    NSAssert(self.IFEFeedConnection != nil, @"Failure to create URL connection.");
+    
+    // Start the status bar network activity indicator. We'll turn it off when the connection
+    // finishes or experiences an error.
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    parseQueue = [NSOperationQueue new];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(addIFE:)
+                                                 name:kAddIFENotif
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(IFEError:)
+                                                 name:kIFEErrorNotif
+                                               object:nil];
+    
     
     return YES;
 }
@@ -89,9 +123,115 @@
 
 - (void)dealloc
 {
+    [IFEFeedConnection cancel];
+    [IFEFeedConnection release];
+    
+    [IFEData release];
     [_window release];
     [_navigationController release];
+    [_rootViewController release];
+
+    [parseQueue release];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kAddIFENotif object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kIFEErrorNotif object:nil];
+    
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark NSURLConnection delegate methods
+
+// The following are delegate methods for NSURLConnection. Similar to callback functions, this is
+// how the connection object, which is working in the background, can asynchronously communicate back
+// to its delegate on the thread from which it was started - in this case, the main thread.
+//
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    // check for HTTP status code for proxy authentication failures
+    // anything in the 200 to 299 range is considered successful,
+    // also make sure the MIMEType is correct:
+    //
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    if ((([httpResponse statusCode]/100) == 2)) {
+        self.IFEData = [NSMutableData data];
+    } else {
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:
+                                  NSLocalizedString(@"HTTP Error",
+                                                    @"Error message displayed when receving a connection error.")
+                                                             forKey:NSLocalizedDescriptionKey];
+        NSError *error = [NSError errorWithDomain:@"HTTP" code:[httpResponse statusCode] userInfo:userInfo];
+        [self handleError:error];
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [IFEData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
+    if ([error code] == kCFURLErrorNotConnectedToInternet) {
+        // if we can identify the error, we can present a more precise message to the user.
+        NSDictionary *userInfo =
+        [NSDictionary dictionaryWithObject:
+         NSLocalizedString(@"No Connection Error",
+                           @"Error message displayed when not connected to the Internet.")
+                                    forKey:NSLocalizedDescriptionKey];
+        NSError *noConnectionError = [NSError errorWithDomain:NSCocoaErrorDomain
+                                                         code:kCFURLErrorNotConnectedToInternet
+                                                     userInfo:userInfo];
+        [self handleError:noConnectionError];
+    } else {
+        // otherwise handle the error generically
+        [self handleError:error];
+    }
+    self.IFEFeedConnection = nil;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    self.IFEFeedConnection = nil;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;   
+    
+    // Spawn an NSOperation to parse the earthquake data so that the UI is not blocked while the
+    // application parses the XML data.
+    //
+    // IMPORTANT! - Don't access or affect UIKit objects on secondary threads.
+    //
+    ParseOperation *parseOperation = [[ParseOperation alloc] initWithData:self.IFEData];
+    [self.parseQueue addOperation:parseOperation];
+    [parseOperation release];   // once added to the NSOperationQueue it's retained, we don't need it anymore
+    
+    // earthquakeData will be retained by the NSOperation until it has finished executing,
+    // so we no longer need a reference to it in the main thread.
+    self.IFEData = nil;
+}
+
+
+// Handle errors in the download by showing an alert to the user. This is a very
+// simple way of handling the error, partly because this application does not have any offline
+// functionality for the user. Most real applications should handle the error in a less obtrusive
+// way and provide offline functionality to the user.
+//
+- (void)handleError:(NSError *)error {
+    NSString *errorMessage = [error localizedDescription];
+    UIAlertView *alertView =
+    [[UIAlertView alloc] initWithTitle:
+     NSLocalizedString(@"Error Title",
+                       @"Title for alert displayed when download or parse error occurs.")
+                               message:errorMessage
+                              delegate:nil
+                     cancelButtonTitle:@"OK"
+                     otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+}
+
+// Our NSNotification callback from the running NSOperation when a parsing error has occurred
+//
+- (void)IFEError:(NSNotification *)notif {
+    assert([NSThread isMainThread]);
+    
+    [self handleError:[[notif userInfo] valueForKey:kIFEMsgErrorKey]];
 }
 
 - (void)addIFE:(NSNotification *)notif {
