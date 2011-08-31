@@ -66,16 +66,45 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    static NSUInteger const kNameLabelTag = 2;
+    static NSUInteger const kInfoLabelTag = 3;
+    static NSUInteger const kRatingLabelTag = 4;
+    
+    UILabel *nameLabel = nil;
+    UILabel *infoLabel = nil;
+    UILabel *ratingLabel = nil;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        
+        nameLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 3, 250, 20)] autorelease];
+        nameLabel.tag = kNameLabelTag;
+        nameLabel.font = [UIFont boldSystemFontOfSize:14];
+        [cell.contentView addSubview:nameLabel];
+        
+        infoLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 28, 250, 14)] autorelease];
+        infoLabel.tag = kInfoLabelTag;
+        infoLabel.font = [UIFont systemFontOfSize:10];
+        [cell.contentView addSubview:infoLabel];
+
+        ratingLabel = [[[UILabel alloc] initWithFrame:CGRectMake(270, 3, 48, 42)] autorelease];
+        ratingLabel.tag = kRatingLabelTag;
+        ratingLabel.font = [UIFont boldSystemFontOfSize:30];
+        [cell.contentView addSubview:ratingLabel];
+
+    } else {
+        nameLabel = (UILabel *)[cell.contentView viewWithTag:kNameLabelTag];
+        infoLabel = (UILabel *)[cell.contentView viewWithTag:kInfoLabelTag];
+        ratingLabel = (UILabel *)[cell.contentView viewWithTag:kRatingLabelTag];
     }
     
     // Configure the cell.
     int row = indexPath.row;
     Movie *movie = [IFEList objectAtIndex:row];
-    cell.textLabel.text = movie.name;
+    nameLabel.text = movie.name;
+    infoLabel.text = [NSString stringWithFormat:@"%u (%um) %@", movie.year, movie.runtime, movie.genre];
+    ratingLabel.text = [NSString stringWithFormat:@"%.1f", movie.rating];
     return cell;
 }
 

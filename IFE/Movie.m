@@ -13,6 +13,7 @@
 @synthesize name;
 @synthesize imdbWebLink;
 @synthesize rating;
+@synthesize year;
 @synthesize runtime;
 @synthesize genre;
 

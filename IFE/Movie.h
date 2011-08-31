@@ -12,14 +12,16 @@
     NSString *name;
     NSURL *imdbWebLink;
     CGFloat rating;
-    int runtime;
+    NSInteger runtime;
+    NSInteger year;
     NSString *genre; 
 }
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSURL *imdbWebLink;
 @property (nonatomic, assign) CGFloat rating;
-@property (nonatomic, assign) int runtime;
+@property (nonatomic, assign) NSInteger runtime;
+@property (nonatomic, assign) NSInteger year;
 @property (nonatomic, retain) NSString *genre;
 
 @end

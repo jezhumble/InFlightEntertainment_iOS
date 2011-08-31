@@ -105,6 +105,22 @@ NSString *kIFEMsgErrorKey = @"IFEMsgErrorKey";
         if (movieName) {
             self.currentMovieObject.name = movieName;
         }
+        NSString *genre = [attributeDict objectForKey:@"genre"];
+        if (genre) {
+            self.currentMovieObject.genre = genre;
+        }
+        NSString *runtime = [attributeDict objectForKey:@"runtime"];
+        if (runtime) {
+            self.currentMovieObject.runtime = [runtime intValue];
+        }
+        NSString *year = [attributeDict objectForKey:@"year"];
+        if (year) {
+            self.currentMovieObject.year = [year intValue];
+        }
+        NSString *rating = [attributeDict objectForKey:@"rating"];
+        if (runtime) {
+            self.currentMovieObject.rating = [rating floatValue];
+        }
     }
 }
 
